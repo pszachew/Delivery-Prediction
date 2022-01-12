@@ -9,7 +9,7 @@ MLP_classifier = joblib.load("MLP_model2.sav")
 app = Flask(__name__)
 
 
-def process_data(data: dict) -> dict:
+def get_prediction(data: dict) -> dict:
     name = request.json["city"]
     response_data = {"name": name, "url": "www"}
     ls=['monday', 'tuesday','wednesday', 'thursday', 'friday', 'saturday', 'sunday']
@@ -48,7 +48,7 @@ def process_request():
     if request.method == "GET":
         if request.get_json(force=True):
             print("Got request: ", request.json)
-            response = process_data(request.json)
+            response = get_prediction(request.json)
             return json.jsonify(response)
         else:
             return "Missing json"
