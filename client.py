@@ -35,11 +35,10 @@ def parse_arguments():
 def main():
     args = parse_arguments()
     data = {
-        "purchase_timestamp": "2021-03-13T15:20:42",
-        "city": "Szczecin",
-        "delivery_company": 620
+        "purchase_timestamp": args.time,
+        "city": args.city,
+        "delivery_company": args.delivery_company
     }
-
 
     print("Sending request:\n", data)
     response = requests.get("http://127.0.0.1:5000/", json=data)
