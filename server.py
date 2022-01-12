@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 from flask import Flask, request, json
-from flask_json import JsonError
 
 app = Flask(__name__)
 
