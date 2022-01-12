@@ -14,6 +14,8 @@ def process_data(data: dict) -> dict:
     response_data = {"name": name, "url": "www"}
     ls=['monday', 'tuesday','wednesday', 'thursday', 'friday', 'saturday', 'sunday']
     flag_morning = 0
+    data['city'] = [data['city']]
+        
     data_df = pd.DataFrame(data)
     data_df['purchase_timestamp'] = data_df['purchase_timestamp'].apply(lambda x: pd.to_datetime(x))
     data_df['delivery_weekday'] = data_df['purchase_timestamp'].apply(lambda x: ls[x.weekday()])
@@ -37,8 +39,8 @@ def process_data(data: dict) -> dict:
     features = features.rename(columns={360:'delivery_360', 254:'delivery_254', 516:'delivery_516', 620:'delivery_620'})
     pred = MLP_classifier.predict(features)
     print(f"predicted delivery days: {pred}")
-
-    return data_df.to_dict()
+    out_dict = {"days":int(pred[0])}
+    return out_dict
 
 
 @app.route('/', methods=["GET"])

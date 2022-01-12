@@ -36,8 +36,8 @@ def main():
     args = parse_arguments()
     data = {
         "purchase_timestamp": "2021-03-13T15:20:42",
-        "city": ["Warszawa"],
-        "delivery_company": [620]
+        "city": "Szczecin",
+        "delivery_company": 620
     }
 
 
