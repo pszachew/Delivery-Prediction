@@ -2,7 +2,7 @@
 
 Projekt polegający na przygotowaniu i wdrożeniu modelu przewodującego czasy dostaw dla sklepu internetowego.
 
-## Uruchomienie
+## Uruchomienie serwera
 
 Do uruchomienia projektu wymagany jest python w wersji 3.
 
@@ -23,3 +23,7 @@ Wysłanie zapytania do serwera
 ```bash
 python3 ./client.py
 ```
+
+## Dokumentacja
+
+Dokumentacja dotycząca modelu wraz z analizą problemu oraz opisem rozwiązania znajduje się w pliku `Raport_koncowy`
