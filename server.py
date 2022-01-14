@@ -6,6 +6,7 @@ import joblib
 import pandas as pd
 
 MLP_classifier = joblib.load("MLP_model2.sav")
+Regression_classifier = joblib.load("logistic_regression.sav")
 app = Flask(__name__)
 
 
@@ -37,7 +38,13 @@ def get_prediction(data: dict) -> dict:
         features["purchase_morning"][0]=1
     
     features = features.rename(columns={360:'delivery_360', 254:'delivery_254', 516:'delivery_516', 620:'delivery_620'})
-    pred = MLP_classifier.predict(features)
+    pred = None
+    if data["model"]=="MLP":
+        pred=MLP_classifier.predict(features)
+    elif data["model"] == "REG":
+        pred=Regression_classifier.predict(features)
+    else:
+        raise ValueError("Wrong value for model type")
     print(f"predicted delivery days: {pred}")
     out_dict = {"days":int(pred[0])}
     return out_dict

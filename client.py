@@ -29,6 +29,12 @@ def parse_arguments():
                    help="Date of purchase.",
                    type=str,
                    default="2021-03-13T15:20:42")
+    p.add_argument('-m',
+                   '--model',
+                   help="Model used for prediction. Regression (REG) or MLP",
+                   type=str,
+                   default="MLP",
+                   choices=["REG", "MLP"])
     return p.parse_args()
 
 
@@ -37,7 +43,8 @@ def main():
     data = {
         "purchase_timestamp": args.time,
         "city": args.city,
-        "delivery_company": args.delivery_company
+        "delivery_company": args.delivery_company,
+        "model": args.model,
     }
 
     print("Sending request:\n", data)
